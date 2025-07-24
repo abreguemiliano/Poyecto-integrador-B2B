@@ -212,3 +212,20 @@ models:
     description: Nombre del método de pago
   - name: descripcion
     description: Descripción del método de pago
+
+  - name: productos_mas_vendidos
+    description: Top 10 productos más vendidos por volumen.
+  - name: ticket_promedio
+    description: Ticket promedio por orden.
+  - name: metodos_pago_mas_utilizados
+    description: Métodos de pago más utilizados.
+  - name: monto_promedio_por_metodo
+    description: Monto promedio pagado por método de pago.
+  - name: usuarios_mas_de_una_orden
+    description: Usuarios que realizaron más de una orden.
+  - name: usuarios_que_mas_gastaron
+    description: Usuarios que más gastaron en total.
+  - name: productos_alto_stock_bajas_ventas
+    description: Productos con alto stock y bajas ventas.
+  - name: categoria_mayor_valor_vendido
+    description: Categoría con mayor valor económico vendido.
