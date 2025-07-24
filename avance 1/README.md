@@ -45,6 +45,7 @@ El archivo `docker-compose.yml` define dos contenedores:
 
 - **PostgreSQL**: Base de datos relacional.
 - **pgAdmin**: Interfaz web para administración de la base de datos.
+- **dbt-service**: Imagen para el sistema de archivos de dbt.
 
 ## Observaciones
 
