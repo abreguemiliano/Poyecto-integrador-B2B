@@ -1,0 +1,157 @@
+version: 1
+models:
+- name: dim_usuarios
+  description: "Dimensiones de usuarios con trazabilidad y control de vigencia"
+  columns:
+  - name: id
+    description: "Identificador unico del usuario"
+  - name: nombre
+    description: Nombre del usuario
+  - name: apellido
+    description: Apellido del usuario
+  - name: dni
+    description: Documento nacional de identidad
+  - name: email
+    description: "Correo electronico del usuario"
+  - name: contrasena
+    description: "Contraseña encriptada del usuario"
+  - name: fecha_registro
+    description: Fecha de registro del usuario
+- name: dim_productos
+  description: "Dimensiones de productos con informacion comercial y de stock"
+  columns:
+  - name: id
+    description: "Identificador unico del producto"
+  - name: nombre
+    description: Nombre del producto
+  - name: descripcion
+    description: "Descripcion del producto"
+  - name: precio
+    description: Precio unitario del producto
+  - name: stock
+    description: Cantidad disponible en inventario
+  - name: categoriaid
+    description: "Identificador de la categoria del producto"
+- name: dim_metodos_pago
+  description: "Dimensiones de metodos de pago disponibles"
+  columns:
+  - name: id
+    description: "Identificador unico del metodo de pago"
+  - name: nombre
+    description: "Nombre del metodo de pago"
+  - name: descripcion
+    description: "Descripcion del metodo de pago"
+- name: dim_direcciones_envio
+  description: "Dimensiones de direcciones de envio asociadas a usuarios"
+  columns:
+  - name: id
+    description: "Identificador unico de la direcciones"
+  - name: usuario_id
+    description: Identificador del usuario
+  - name: calle
+    description: Nombre de la calle
+  - name: ciudad
+    description: "Ciudad de la direcciones"
+  - name: departamento
+    description: Departamento o unidad
+  - name: provincia
+    description: "Provincia de la direcciones"
+  - name: distrito
+    description: "Distrito de la direcciones"
+  - name: estado
+    description: "Estado o region"
+  - name: codigo_postal
+    description: "codigo postal"
+  - name: pais
+    description: "Pais de la direcciones"
+- name: dim_categorias
+  description: "Dimensiones de categorias de productos"
+  columns:
+  - name: id
+    description: "Identificador unico de la categoria"
+  - name: nombre
+    description: "Nombre de la categoria"
+  - name: descripcion
+    description: "Descripcion de la categoria"
+- name: fact_carrito
+  description: Tabla de hechos que registra productos agregados al carrito por los
+    usuarios
+  columns:
+  - name: id
+    description: "Identificador unico del registro en el carrito"
+  - name: usuario_id
+    description: Identificador del usuario
+  - name: producto_id
+    description: Identificador del producto
+  - name: cantidad
+    description: Cantidad agregada al carrito
+  - name: fecha_agregado
+    description: "Fecha en que se agrego el producto al carrito"
+- name: fact_ordenes
+  description: "Tabla de hechos que registra las ordenesrealizadas por los usuarios"
+  columns:
+  - name: id
+    description: "Identificador unico de la orden"
+  - name: usuario_id
+    description: Identificador del usuario
+  - name: fecha_orden
+    description: "Fecha en que se realizo la orden"
+  - name: total
+    description: Monto total de la orden
+  - name: estado
+    description: Estado actual de la orden
+- name: fact_detalle_ordenes
+  description: Tabla de hechos que detalla los productos incluidos en cada orden
+  columns:
+  - name: id
+    description: "Identificador unico del detalle"
+  - name: orden_id
+    description: Identificador de la orden
+  - name: producto_id
+    description: Identificador del producto
+  - name: cantidad
+    description: Cantidad del producto en la orden
+  - name: precio_unitario
+    description: Precio unitario del producto en la orden
+- name: fact_historial_pagos
+  description: Tabla de hechos que registra el historial de pagos realizados
+  columns:
+  - name: id
+    description: "Identificador unico del pago"
+  - name: orden_id
+    description: Identificador de la orden
+  - name: metodo_pago_id
+    description: "Identificador del metodo de pago"
+  - name: monto
+    description: Monto pagado
+  - name: fecha_pago
+    description: Fecha del pago
+  - name: estado_pago
+    description: Estado del pago
+- name: fact_ordenes_metodo_pago
+  description: "Tabla de hechos que relaciona ordenescon metodos de pago utilizados"
+  columns:
+  - name: id
+    description: "Identificador unico del registro"
+  - name: orden_id
+    description: Identificador de la orden
+  - name: metodo_pago_id
+    description: "Identificador del metodo de pago"
+  - name: monto_pagado
+    description: "Monto pagado con ese metodo"
+- name: fact_resenas_productos
+  description: "Tabla de hechos que registra reseñas y calificaciones de productos\
+    \ por usuarios"
+  columns:
+  - name: id
+    description: "Identificador unico de la reseña"
+  - name: usuario_id
+    description: Identificador del usuario
+  - name: producto_id
+    description: Identificador del producto
+  - name: calificacion
+    description: "Calificacion otorgada"
+  - name: comentario
+    description: Comentario del usuario
+  - name: fecha
+    description: "Fecha de la reseña"
