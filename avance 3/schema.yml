@@ -5,6 +5,9 @@ models:
   columns:
   - name: orden_id
     description: Identificador de la orden
+    tests :
+      - not_null
+      - unique
   - name: usuario_id
     description: Identificador del usuario
   - name: fecha_orden
@@ -17,6 +20,9 @@ models:
   description: Staging de la tabla fact_ordenes_metodo_pago
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador del registro
   - name: orden_id
     description: Identificador de la orden
@@ -28,6 +34,9 @@ models:
   description: Staging de la tabla fact_detalle_ordenes
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador del detalle
   - name: orden_id
     description: Identificador de la orden
@@ -41,6 +50,9 @@ models:
   description: Modelo final que une ordenes, métodos de pago y detalles de orden
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador del detalle
   - name: orden_id
     description: Identificador de la orden
@@ -64,6 +76,9 @@ models:
   description: Historial de pagos realizados por los usuarios
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador del pago
   - name: orden_id
     description: Orden asociada al pago
@@ -79,6 +94,9 @@ models:
   description: Dimensión de productos
   columns:
   - name: producto_id
+    tests :
+      - not_null
+      - unique
     description: Identificador del producto
   - name: nombre
     description: Nombre del producto
@@ -94,6 +112,9 @@ models:
   description: Dimensión de categorías de productos
   columns:
   - name: categoria_id
+    tests :
+      - not_null
+      - unique
     description: Identificador de la categoría
   - name: nombre
     description: Nombre de la categoría
@@ -103,6 +124,9 @@ models:
   description: Reseñas realizadas por los usuarios sobre productos
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador de la reseña
   - name: usuario_id
     description: Usuario que hizo la reseña
@@ -118,6 +142,9 @@ models:
   description: Direcciones de envío registradas por los usuarios
   columns:
   - name: direccion_id
+    tests :
+      - not_null
+      - unique
     description: Identificador de la dirección
   - name: usuario_id
     description: Usuario asociado
@@ -141,6 +168,9 @@ models:
   description: Carrito de compras de los usuarios
   columns:
   - name: id
+    tests :
+      - not_null
+      - unique
     description: Identificador del ítem en el carrito
   - name: usuario_id
     description: Usuario que agregó el producto
@@ -154,6 +184,9 @@ models:
   description: Información de los usuarios registrados
   columns:
   - name: usuario_id
+    tests :
+      - not_null
+      - unique
     description: Identificador del usuario
   - name: nombre
     description: Nombre del usuario
@@ -171,6 +204,9 @@ models:
   description: Métodos de pago disponibles
   columns:
   - name: metodo_pago_id
+    tests :
+      - not_null
+      - unique
     description: Identificador del método de pago
   - name: nombre
     description: Nombre del método de pago
